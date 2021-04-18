@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: flinks-ingress
+  annotations:
+    flinksnginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: challenge.domain.local
+      http:
+        paths:
+          - backend:
+              serviceName: flinks-nginx-service
+              servicePort: 80

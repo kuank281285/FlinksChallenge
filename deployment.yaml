@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flinks-nginx
+  namespace: flinks
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: flinksnginx
+  template:
+    metadata:
+      labels:
+        app: flinksnginx
+    spec:
+      containers:
+      - name: flinksnginx
+        image: flinksnginx:1.0.0
+        ports:
+        - containerPort: 80
